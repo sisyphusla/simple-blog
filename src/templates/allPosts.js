@@ -1,9 +1,9 @@
 import React from "react";
-import { graphql, } from "gatsby";
+import { graphql } from "gatsby";
 import { Container, Content, ContentCard, FeatureImage, Pagination, } from "../components";
 import { H1, P } from "../elements"
 
-export const allPosts = ({ pageContext, data }) => {
+const allPosts = ({ pageContext, data }) => {
   const { currentPage, numPages } = pageContext;
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
@@ -44,9 +44,9 @@ export const allPosts = ({ pageContext, data }) => {
   )
 }
 
-export default allPosts
+export default allPosts;
 
-export const pageQuery = graphql(`
+export const pageQuery = graphql`
   query AllPostsQuery ($skip: Int, $limit: Int) {
     allMdx(sort: {frontmatter: {date: DESC}}, limit: $limit, skip: $skip) {
       edges {
@@ -61,4 +61,4 @@ export const pageQuery = graphql(`
       }
     }
   }
-`)
+`

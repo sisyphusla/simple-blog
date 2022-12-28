@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { useStaticQuery, graphql } from "gatsby";
 import { FeatureImageWrapper } from '../elements'
 
-export const FeatureImage = ({ fixed }) => {
+export const FeatureImage = ({ gatsbyImageData }) => {
 
   const data = useStaticQuery(graphql`
     query {
@@ -14,7 +14,7 @@ export const FeatureImage = ({ fixed }) => {
   `)
   return (
     <FeatureImageWrapper>
-      <GatsbyImage image={fixed ? fixed : data.imageSharp.gatsbyImageData} style={{
+      <GatsbyImage image={gatsbyImageData ? gatsbyImageData : data.imageSharp.gatsbyImageData} style={{
         position: 'absolute',
         left: 0,
         top: 0,

@@ -20,10 +20,10 @@ exports.createPages = async ({ actions, graphql }) => {
   const postPerPage = 3;
   const numPages = Math.ceil(data.allMdx.edges.length / postPerPage);
 
-  Array.from({ legth: numPages }).forEach((_, i) => {
+  Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/` : `/${i + 1}`,
-      component: path.resolve("./src/templates/allPosts.js"),
+      component: path.resolve(`./src/templates/allPosts.js`),
       context: {
         limit: postPerPage,
         skip: i * postPerPage,
