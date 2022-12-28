@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { useStaticQuery, graphql } from "gatsby";
 import { FeatureImageWrapper } from '../elements'
 
@@ -8,15 +8,13 @@ export const FeatureImage = ({ fixed }) => {
   const data = useStaticQuery(graphql`
     query {
       imageSharp(fixed: {originalName: {eq: "office.jpg"}}) {
-        fixed {
-          ...GatsbyImageSharpFixed
-        }
+        gatsbyImageData(layout: FIXED)
       }
     }
   `)
   return (
     <FeatureImageWrapper>
-      <Img fixed={fixed ? fixed : data.imageSharp.fixed} style={{
+      <GatsbyImage image={fixed ? fixed : data.imageSharp.gatsbyImageData} style={{
         position: 'absolute',
         left: 0,
         top: 0,
