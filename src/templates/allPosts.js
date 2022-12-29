@@ -16,7 +16,7 @@ const allPosts = ({ pageContext, data }) => {
       <FeatureImage />
       <Content>
         <H1 textAlign="center" margin="0 0 1rem 0">
-          This is a apple.
+          This is an apple.
         </H1>
         <P color="dark2" textAlign="center">
           ekugtiuegsltu lkhrlekhrlkwehr
@@ -34,12 +34,13 @@ const allPosts = ({ pageContext, data }) => {
           />
         ))}
       </Content>
-      <Pagination>
+      <Pagination
         isFirst={isFirst}
         isLast={isLast}
         prevPage={prevPage}
         nextPage={nextPage}
-      </Pagination>
+
+      />
     </Container>
   )
 }
@@ -47,7 +48,7 @@ const allPosts = ({ pageContext, data }) => {
 export default allPosts;
 
 export const pageQuery = graphql`
-  query AllPostsQuery ($skip: Int, $limit: Int) {
+  query AllPostsQuery ($skip: Int!, $limit: Int!) {
     allMdx(sort: {frontmatter: {date: DESC}}, limit: $limit, skip: $skip) {
       edges {
         node {
