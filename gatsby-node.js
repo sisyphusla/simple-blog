@@ -33,14 +33,14 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   })
 
-  // // create sigle bolg post
-  // data.allMdx.edges.forEach(edge => {
-  //   const slug = edge.node.frontmatter.slug;
-  //   const id = edge.node.id;
-  //   actions.createPage({
-  //     path: slug,
-  //     component: require.resolve('./src/templates/singlePost.js'),
-  //     context: { id },
-  //   })
-  // })
+  // create sigle bolg post
+  data.allMdx.edges.forEach(edge => {
+    const slug = edge.node.frontmatter.slug;
+    const id = edge.node.id;
+    createPage({
+      path: slug,
+      component: path.resolve(`./src/templates/singlePost.js`),
+      context: { id },
+    })
+  })
 }
